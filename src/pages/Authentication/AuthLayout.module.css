@@ -1,0 +1,18 @@
+.AuthLayout{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+}
+
+.header,.footer{
+    width: 100vw;
+    height: 15vh;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 70vh;
+}
