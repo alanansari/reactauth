@@ -1,18 +1,29 @@
 .AuthLayout{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
+    background-color: #2629ae;
 }
 
-.header,.footer{
+.lightbox{
+    z-index: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
     width: 100vw;
-    height: 15vh;
+    background: radial-gradient(circle at var(--x) var(--y), transparent 5%,#000000 50%);
 }
 
-.body{
+.form_box{
+    z-index: 1;
     display: flex;
     justify-content: center;
-    width: 100vw;
+    align-items: center;
     height: 70vh;
+    min-width: 30vw;
+    background-color: whitesmoke;
+    border-radius: 20px;
 }

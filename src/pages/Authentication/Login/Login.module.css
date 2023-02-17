@@ -1,3 +1,32 @@
 .container{
-    width: 50vw;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 95%;
+    width: 80%;
+}
+
+.title_box{
+    min-height: 15%;
+    width: 100%;
+}
+
+.form_fields{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 60%;
+    width: 100%;
+}
+
+.options{
+    min-height: 20%;
+    width: 100%;
+}
+
+.heading{
+    font-weight: 700;
+    font-size: xx-large;
+    text-align: center;
 }

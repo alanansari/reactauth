@@ -25,6 +25,7 @@ const Email = () => {
     variant="outlined"
     fullWidth
     label='Email'
+    margin="normal"
     value={val}
     onChange={(e)=>{handleChange(e)}}
     /></Tooltip>
@@ -33,15 +34,16 @@ const Email = () => {
       required
       id="outlined-error-helper-text"
       label="Email"
+      margin="normal"
       value={val}
       fullWidth
       onChange={(e)=>{handleChange(e)}}
 /></Tooltip>;
 
   return (
-      <>
+      <div>
         {content}
-      </>
+      </div>
   )
 }
 

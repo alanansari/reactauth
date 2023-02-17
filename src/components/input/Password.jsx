@@ -17,11 +17,17 @@ const Password = () => {
 
   function handleChange(e) {
     let value = e.target.value;
-    setVal(value.trim())
+    setVal(e.target.value);
     if(value!=='')
     setValid(value.match(
       /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
     ));
+  }
+
+  function handleSpaces(e){
+    console.log(e.key);
+    if(e.key===" ")
+      e.preventDefault();
   }
 
   let content;
@@ -32,9 +38,10 @@ const Password = () => {
     id="outlined-password-input"
     label="Password"
     type="password"
-    autoComplete="current-password"
     fullWidth
     value={val}
+    margin="normal"
+    onKeyDown={(e)=>{handleSpaces(e)}}
     onChange={(e)=>{handleChange(e)}}
     /></CustomWidthTooltip>
   : content = <CustomWidthTooltip arrow title="Password must contain atleast 8 characters including one uppercase, one lowercase, one number and a special character"
@@ -45,7 +52,9 @@ const Password = () => {
       type="password"
       label="Password"
       value={val}
+      margin="normal"
       fullWidth
+      onKeyDown={(e)=>{handleSpaces(e)}}
       onChange={(e)=>{handleChange(e)}}
       /></CustomWidthTooltip>;
 
