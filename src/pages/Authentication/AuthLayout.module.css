@@ -1,10 +1,15 @@
+:root{
+    --x:0px;
+    --y:0px;
+}
+
 .AuthLayout{
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #2629ae;
+    background-color: #2a26ae;
 }
 
 .lightbox{
@@ -14,16 +19,16 @@
     left: 0;
     height: 100vh;
     width: 100vw;
-    background: radial-gradient(circle at var(--x) var(--y), transparent 5%,#000000 50%);
+    background: radial-gradient(circle at var(--x) var(--y), transparent 5%,#1a1a1a 40%);
 }
 
 .form_box{
     z-index: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 70vh;
-    min-width: 30vw;
+    align-items: baseline;
+    min-height: 50vh;
+    width: 32vw;
     background-color: whitesmoke;
-    border-radius: 20px;
+    border-radius: 15px;
 }
