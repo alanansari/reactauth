@@ -1,6 +1,7 @@
 import {React,useState} from 'react'
 import { styled } from '@mui/material/styles';
 import { TextField, Tooltip, tooltipClasses} from '@mui/material';
+import { validatePassword } from '../../utils/vallidate';
 
 const CustomWidthTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -19,9 +20,7 @@ const Password = () => {
     let value = e.target.value;
     setVal(e.target.value);
     if(value!=='')
-    setValid(value.match(
-      /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/
-    ));
+    setValid(validatePassword(value));
   }
 
   function handleSpaces(e){

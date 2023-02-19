@@ -3,11 +3,20 @@ import { Button } from '@mui/material';
 import React from 'react'
 
 const CommonButton = (props) => {
+
+  let button = (props.disabled === true) ?
+    <Button disabled fullWidth variant={props.variant} disableElevation>
+      {props.text}
+    </Button>
+  :
+    <Button fullWidth variant={props.variant} disableElevation>
+      {props.text}
+    </Button>
+  ;
+
   return (
     <div className={props.className} style={{margin:props.margin}}>
-    <Button fullWidth variant={props.variant} disableElevation>
-        {props.text}
-    </Button>
+      {button}
     </div>
   )
 }

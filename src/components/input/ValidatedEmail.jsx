@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TextField, Tooltip } from '@mui/material';
+import { validateEmail } from '../../utils/vallidate';
 
 
 const Email = () => {
@@ -11,9 +12,7 @@ const Email = () => {
     let value = e.target.value;
     setVal(value.trim())
     if(value!=='')
-    setValid(value.match(
-      /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    ));
+    setValid(validateEmail(value));
   }
 
   let content;

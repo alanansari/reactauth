@@ -1,7 +1,8 @@
 import styles from "./AuthLayout.module.css";
 import Login from "./Login/Login";
-// import Signup from "./Signup/SignUp";
-// import OtpPage from "./Otp/Otp";
+import Signup from "./Signup/SignUp";
+import OtpPage from "./Otp/Otp";
+import { Route,Routes,Navigate } from 'react-router-dom';
 
 function trackMouse(e){
     let pos = document.getElementById('lightbox');
@@ -13,11 +14,16 @@ export default function AuthLayout(props){
     return(
         <div className={styles.AuthLayout}>
             <div id='lightbox' onMouseMove={(e)=>{trackMouse(e)}} className={styles.lightbox}></div>
+            
             <div className={styles.form_box}>
-                <Login/>
-                {/* <Signup/>
-                <OtpPage email='alan@gmail.com' /> */}
+                <Routes>
+                    <Route path="/" element={<Navigate replace to="/login" />}></Route>
+                    <Route path='/login' element={ <Login/> } />
+                    <Route path='/signup' element={ <Signup /> } />
+                    <Route path='/signup/otp' element={ <OtpPage /> } />
+                </Routes>
             </div>
+
         </div>
     )
 } 
