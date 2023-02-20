@@ -9,7 +9,7 @@ const CommonButton = (props) => {
       {props.text}
     </Button>
   :
-    <Button fullWidth variant={props.variant} disableElevation>
+    <Button onClick={()=>{props.handleClick()}} fullWidth variant={props.variant} disableElevation>
       {props.text}
     </Button>
   ;

@@ -1,43 +1,39 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { TextField, Tooltip } from '@mui/material';
 import { validateEmail } from '../../utils/vallidate';
 
 
-const Email = () => {
-
-  const [val,setVal] = useState('');
-  const [isValid,setValid] = useState(true);
+const Email = (props) => {
 
   function handleChange(e) {
     let value = e.target.value;
-    setVal(value.trim())
+    props.setVal(value.trim())
     if(value!=='')
-    setValid(validateEmail(value));
+    props.setValid(validateEmail(value));
   }
 
-  let content;
-
-  (isValid)?
-    content = <Tooltip title='' placement='right'><TextField
+  let content =
+  (props.isValid)?
+  <Tooltip title='' placement='right'><TextField
     required
     id="outlined-basic"
     variant="outlined"
     fullWidth
     label="Email"
     margin="normal"
-    value={val}
+    value={props.val}
     onChange={(e)=>{handleChange(e)}}
-    /></Tooltip>
-  : content = <Tooltip arrow title="Invalid Email" placement="right"><TextField
+  /></Tooltip>
+  : <Tooltip arrow title="Invalid Email" placement="right"><TextField
       error
       required
       id="outlined-error"
       label="Email"
       margin="normal"
-      value={val}
+      value={props.val}
       fullWidth
       onChange={(e)=>{handleChange(e)}}
-/></Tooltip>;
+    /></Tooltip>;
 
   return (
       <div>

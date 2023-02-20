@@ -3,8 +3,6 @@ import { TextField } from '@mui/material';
 
 const Email = (props) => {
 
-    
-
     function handleChange(e) {
         let value = e.target.value;
         props.setVal(value.trim());

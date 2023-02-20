@@ -1,18 +1,20 @@
 import {React,useEffect,useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import Toast from '../../../components/Toast';
+import { toast } from 'react-toastify';
 import styles from './Login.module.css'
 import Email from '../../../components/input/Email'
 import Password from '../../../components/input/Password'
 import CommonButton from '../../../components/buttons/commonButton';
-
+import axios from 'axios'
+import LoadingBtn from '../../../components/buttons/loading';
 
 const Login = () => {
 
   const [emailVal,setEmailVal] = useState('');
   const [passVal,setPassVal] = useState('');
-
-  let [disability,setDisability] = useState(true);
-  console.log(disability);
+  const [disability,setDisability] = useState(true);
+  const [loading,setLoading] = useState(false);
 
   useEffect(()=>{
     if((emailVal.length>0)&&(passVal.length>0)){
@@ -23,25 +25,60 @@ const Login = () => {
   },[emailVal,passVal]);
 
   const navigate = useNavigate();
+
   function goToPage(link){
       navigate(link);
   }
 
+  function handleSubmit(){
+    console.log('called');
+    setLoading(true);
+    axios.post('https://reqres.in/api/login',{
+      email:emailVal,
+      password:passVal
+    }).then(res=>{
+      setLoading(false);
+      console.log(res.data);
+      goToPage('../welcome');
+    }).catch(err => {
+      setLoading(false);
+      toast.error(`${err.response.data.error}`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    });
+  }
+
+
+  const button = (loading) ?
+    <LoadingBtn margin='3vh 0'>Submit</LoadingBtn> 
+  : <CommonButton
+  handleClick={handleSubmit}
+  disabled={disability}
+  variant='contained' 
+  className="common_btn" 
+  text='SUBMIT'
+  margin='3vh 0'
+  />;
+
+  
+
   return (
     <div className={styles.container}> 
+      <Toast/>
       <div className={styles.title_box}>
         <div className={styles.heading}>Login</div>
       </div>
       <div className={styles.form_fields}>
-        <Email val={emailVal} setVal={setEmailVal} />
-        <Password val={passVal} setVal={setPassVal} />
-        <CommonButton
-          disabled={disability}
-          variant='contained' 
-          className="common_btn" 
-          text='SUBMIT'
-          margin='3vh 0'
-          />
+        <Email id='email' val={emailVal} setVal={setEmailVal} />
+        <Password id='password' val={passVal} setVal={setPassVal} />
+        {button}
       </div>
       <div className={styles.options}>
         <div>Don't have an account? &nbsp;
