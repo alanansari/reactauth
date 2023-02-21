@@ -12,7 +12,7 @@ const OtpPage = () => {
   const [disability,setDisability] = useState(true);
   const [loading,setLoading] = useState(false);
   const [otp, setOtp] = React.useState('');
-  const [seconds,setSeconds] = useState(10);
+  const [seconds,setSeconds] = useState(29);
   const [resendDisabled,setResendDisabled] = useState(true);
 
   const handleChange = (newValue) => {
@@ -108,11 +108,11 @@ const OtpPage = () => {
   const submitbutton = (loading) ?
     <LoadingBtn margin='2vh 0 6vh 0'>Submit</LoadingBtn> 
   : <CommonButton
-      disabled={disability} 
-      variant='contained' 
-      className="common_btn" 
-      text='Continue' 
-      margin='2vh 0 6vh 0' 
+      disabled={disability}
+      variant='contained'
+      className="common_btn"
+      text='Continue'
+      margin='2vh 0 6vh 0'
       handleClick={handleSubmit}
     />;
 
@@ -123,9 +123,17 @@ const OtpPage = () => {
         <div className={styles.heading}>Otp Verification</div>
       </div>
       <div className={styles.form_fields}>
-        <div className={styles.text}>Enter the otp sent to: <b style={{color:'#6b75cd'}}>{location.state.email}</b></div>
+        <div className={styles.text}>Enter the otp sent to: 
+          <b style={{color:'#6b75cd'}}>{location.state.email}</b>
+        </div>
         <Otp otp={otp} handleChange={handleChange} margin='1vh 0 3vh 0' />
-        <CommonButton handleClick={handleClick} disabled={resendDisabled} variant='outlined' className="common_btn" text={`${seconds || ''} Resend Otp`} margin='3vh 0 1vh 0'/>
+        <CommonButton
+          handleClick={handleClick}
+          disabled={resendDisabled}
+          variant='outlined'
+          className="common_btn"
+          text={`${seconds || ''} Resend Otp`}
+          margin='3vh 0 1vh 0'/>
         {submitbutton}
       </div>
       <div className={styles.options}>

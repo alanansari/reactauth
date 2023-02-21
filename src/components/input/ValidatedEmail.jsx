@@ -4,6 +4,11 @@ import { validateEmail } from '../../utils/vallidate';
 
 const Email = (props) => {
 
+  function handleSpaces(e){
+    if(e.key===" ")
+        e.preventDefault();
+}
+
   function handleChange(e) {
     let value = e.target.value;
     props.setVal(value.trim())
@@ -21,6 +26,7 @@ const Email = (props) => {
     label="Email"
     margin="normal"
     value={props.val}
+    onKeyDown={(e)=>{handleSpaces(e)}}
     onChange={(e)=>{handleChange(e)}}
   /></Tooltip>
   : <Tooltip arrow title="Invalid Email" placement="right"><TextField
@@ -31,6 +37,7 @@ const Email = (props) => {
       margin="normal"
       value={props.val}
       fullWidth
+      onKeyDown={(e)=>{handleSpaces(e)}}
       onChange={(e)=>{handleChange(e)}}
     /></Tooltip>;
 

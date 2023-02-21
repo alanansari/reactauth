@@ -25,7 +25,7 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
-  function handleClick(link){
+  function handleClick(){
       setLoading(true);
       axios.post('http://localhost:5000/email',{
       email:emailVal
@@ -48,7 +48,7 @@ const Signup = () => {
       console.log(err);
       toast.error(`${err.response.data.msg}`, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 2500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -89,7 +89,7 @@ const Signup = () => {
       <div className={styles.options}>
         <div>Already a user? &nbsp;
           <span className={styles.login} 
-                onClick={()=>{handleClick('../login')}}
+                onClick={()=>{navigate('/login')}}
                 >Login
           </span>
         </div>
