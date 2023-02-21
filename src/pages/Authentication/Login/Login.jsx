@@ -33,16 +33,17 @@ const Login = () => {
   function handleSubmit(){
     console.log('called');
     setLoading(true);
-    axios.post('https://reqres.in/api/login',{
+    axios.post('http://localhost:5000/login',{
       email:emailVal,
       password:passVal
     }).then(res=>{
       setLoading(false);
-      console.log(res.data);
+      console.log(res);
       goToPage('../welcome');
     }).catch(err => {
       setLoading(false);
-      toast.error(`${err.response.data.error}`, {
+      console.log(err);
+      toast.error(`${err.response.data.msg}`, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,

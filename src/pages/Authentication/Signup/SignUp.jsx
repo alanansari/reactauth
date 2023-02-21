@@ -1,9 +1,12 @@
 import {React,useEffect,useState} from 'react'
+import axios from 'axios';
 import styles from './SignUp.module.css'
 import Email from '../../../components/input/ValidatedEmail'
 import CommonButton from '../../../components/buttons/commonButton';
 import LoadingBtn from '../../../components/buttons/loading';
 import { useNavigate } from 'react-router-dom'
+import Toast from '../../../components/Toast';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
 
@@ -24,7 +27,36 @@ const Signup = () => {
 
   function handleClick(link){
       setLoading(true);
-      navigate(link,{state:{email:emailVal}});
+      axios.post('http://localhost:5000/email',{
+      email:emailVal
+    }).then(res=>{
+      setLoading(false);
+      console.log(res);
+      toast.success(`${res.data.msg}`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+      navigate('./otp',{state:{email:emailVal}});
+    }).catch(err => {
+      setLoading(false);
+      console.log(err);
+      toast.error(`${err.response.data.msg}`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    });
   }
 
   const button = (loading) ?
@@ -39,7 +71,8 @@ const Signup = () => {
     />;
 
   return (
-    <div className={styles.container}> 
+    <div className={styles.container}>
+      <Toast/> 
       <div className={styles.title_box}>
         <div className={styles.heading}>Sign Up</div>
       </div>

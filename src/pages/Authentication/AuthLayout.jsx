@@ -30,6 +30,7 @@ export default function AuthLayout(props){
                     <Route path='/signup/otp' element={ <OtpPage /> } />
                     <Route path='/setpassword' element={ <SetPassword /> } />
                     <Route path='/welcome' element={ <Welcome /> } />
+                    <Route path='/*' element={<Navigate replace to='../' />} />
                 </Routes>
             </div>
 
