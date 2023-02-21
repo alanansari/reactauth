@@ -64,7 +64,7 @@ const Login = () => {
   variant='contained' 
   className="common_btn" 
   text='SUBMIT'
-  margin='3vh 0'
+  margin='5vh 0 2vh 0'
   />;
 
   
@@ -77,7 +77,7 @@ const Login = () => {
       </div>
       <div className={styles.form_fields}>
         <Email id='email' val={emailVal} setVal={setEmailVal} />
-        <Password id='password' val={passVal} setVal={setPassVal} />
+        <Password tooltipmsg={''} label='Password' id='password' val={passVal} setVal={setPassVal} />
         {button}
       </div>
       <div className={styles.options}>

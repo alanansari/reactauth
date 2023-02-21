@@ -7,15 +7,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 const rootdiv = document.getElementById('root');
 
-function trackMouse(e){
-  let pos = document.getElementById('lightbox');
-  pos.style.setProperty('--x',e.clientX + 'px');
-  pos.style.setProperty('--y',e.clientY + 'px');
-}
-
-rootdiv.addEventListener('mousemove',(e)=>{trackMouse(e)});
-
-
 const root = ReactDOM.createRoot(rootdiv);
 root.render(
   <React.StrictMode>

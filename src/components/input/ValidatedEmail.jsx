@@ -2,7 +2,6 @@ import React from 'react'
 import { TextField, Tooltip } from '@mui/material';
 import { validateEmail } from '../../utils/vallidate';
 
-
 const Email = (props) => {
 
   function handleChange(e) {

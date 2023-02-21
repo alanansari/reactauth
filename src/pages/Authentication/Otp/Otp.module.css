@@ -40,5 +40,6 @@
 
 .text{
     font-size: small;
-    margin: 1vh 0 2vh 0;
+    margin: 1vh 0 3vh 0;
+    opacity: 0.65;
 }

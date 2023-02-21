@@ -1,7 +1,7 @@
 import {React,useState} from 'react'
 import { styled } from '@mui/material/styles';
 import { TextField, Tooltip, tooltipClasses} from '@mui/material';
-import { validatePassword } from '../../utils/vallidate';
+import { validatePass } from '../../utils/vallidate';
 
 const CustomWidthTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -11,20 +11,19 @@ const CustomWidthTooltip = styled(({ className, ...props }) => (
   },
 });
 
-const Password = () => {
+const ValPassword = (props) => {
 
-  const [val,setVal] = useState('');
+  // const [val,setVal] = useState('');
   const [isValid,setValid] = useState(true);
 
   function handleChange(e) {
     let value = e.target.value;
-    setVal(e.target.value);
+    props.setVal(e.target.value);
     if(value!=='')
-    setValid(validatePassword(value));
+    setValid(validatePass(value));
   }
 
   function handleSpaces(e){
-    console.log(e.key);
     if(e.key===" ")
       e.preventDefault();
   }
@@ -35,10 +34,10 @@ const Password = () => {
     content = <CustomWidthTooltip title='' placement='right'><TextField
     required
     id="outlined-password-input"
-    label="Password"
+    label={props.label}
     type="password"
     fullWidth
-    value={val}
+    value={props.val}
     margin="normal"
     onKeyDown={(e)=>{handleSpaces(e)}}
     onChange={(e)=>{handleChange(e)}}
@@ -50,7 +49,7 @@ const Password = () => {
       id="outlined-password-input"
       type="password"
       label="Password"
-      value={val}
+      value={props.val}
       margin="normal"
       fullWidth
       onKeyDown={(e)=>{handleSpaces(e)}}
@@ -64,4 +63,4 @@ const Password = () => {
     )
 }
 
-export default Password
+export default ValPassword

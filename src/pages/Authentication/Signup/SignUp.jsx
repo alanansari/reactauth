@@ -2,6 +2,7 @@ import {React,useEffect,useState} from 'react'
 import styles from './SignUp.module.css'
 import Email from '../../../components/input/ValidatedEmail'
 import CommonButton from '../../../components/buttons/commonButton';
+import LoadingBtn from '../../../components/buttons/loading';
 import { useNavigate } from 'react-router-dom'
 
 const Signup = () => {
@@ -9,6 +10,7 @@ const Signup = () => {
   const [emailVal,setEmailVal] = useState('');
   const [isValid,setValid] = useState(true);
   const [disability,setDisability] = useState(true);
+  const [loading,setLoading] = useState(false);
 
   useEffect(()=>{
     if((emailVal.length>0)&&(isValid)){
@@ -21,8 +23,20 @@ const Signup = () => {
   const navigate = useNavigate();
 
   function handleClick(link){
-      navigate(link);
+      setLoading(true);
+      navigate(link,{state:{email:emailVal}});
   }
+
+  const button = (loading) ?
+    <LoadingBtn margin='5vh 0 2vh 0'>Submit</LoadingBtn> 
+  : <CommonButton
+    handleClick={()=>{handleClick('./otp')}}
+    disabled={disability} 
+    variant='contained' 
+    className="common_btn" 
+    text='Next' 
+    margin='5vh 0 2vh 0'
+    />;
 
   return (
     <div className={styles.container}> 
@@ -37,13 +51,7 @@ const Signup = () => {
           isValid={isValid}
           setValid={setValid}
         />
-        <CommonButton
-          disabled={disability} 
-          variant='contained' 
-          className="common_btn" 
-          text='Next' 
-          margin='5vh 0'
-        />
+        {button}
       </div>
       <div className={styles.options}>
         <div>Already a user? &nbsp;
