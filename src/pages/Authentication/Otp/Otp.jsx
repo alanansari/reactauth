@@ -63,7 +63,7 @@ const OtpPage = () => {
         progress: undefined,
         theme: "colored",
       });
-      setSeconds(10);
+      setSeconds(29);
       setResendDisabled(true);
     })
     .catch(err=>{
@@ -125,7 +125,7 @@ const OtpPage = () => {
         <div className={styles.heading}>Otp Verification</div>
       </div>
       <div className={styles.form_fields}>
-        <div className={styles.text}>Enter the otp sent to: 
+        <div className={styles.text}>Enter the otp sent to:  
           <b style={{color:'#6b75cd'}}>{location.state.email}</b>
         </div>
         <Otp otp={otp} handleChange={handleChange} margin='1vh 0 3vh 0' />

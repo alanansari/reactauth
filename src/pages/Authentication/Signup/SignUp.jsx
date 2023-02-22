@@ -32,7 +32,7 @@ const Signup = () => {
     }).then(res=>{
       setLoading(false);
       console.log(res);
-      navigate('/otp',{state:{email:emailVal,from:'signup'}});
+      navigate('../otp',{state:{email:emailVal,from:'signup'}});
     }).catch(err => {
       setLoading(false);
       console.log(err);
@@ -52,7 +52,7 @@ const Signup = () => {
   const button = (loading) ?
     <LoadingBtn margin='5vh 0 2vh 0'>Submit</LoadingBtn> 
   : <CommonButton
-    handleClick={()=>{handleClick('/otp')}}
+    handleClick={()=>{handleClick()}}
     disabled={disability} 
     variant='contained' 
     className="common_btn" 
@@ -79,7 +79,7 @@ const Signup = () => {
       <div className={styles.options}>
         <div>Already a user? &nbsp;
           <span className={styles.login} 
-                onClick={()=>{navigate('/login')}}
+                onClick={()=>{navigate('../login')}}
                 >Login
           </span>
         </div>

@@ -80,7 +80,7 @@ const Fpassword = () => {
       <div className={styles.options}>
         <div>Don't have an account? &nbsp;
           <span className={styles.signup} 
-                onClick={()=>{navigate('/signup')}}
+                onClick={()=>{navigate('../signup')}}
                 >Signup
           </span>
         </div>

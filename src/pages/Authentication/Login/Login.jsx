@@ -79,7 +79,7 @@ const Login = () => {
       <div className={styles.form_fields}>
         <Email id='email' val={emailVal} setVal={setEmailVal} />
         <Password tooltipmsg={''} label='Password' id='password' val={passVal} setVal={setPassVal} />
-        <div className={styles.text} onClick={()=>{navigate('/forgotpass')}}>
+        <div className={styles.text} onClick={()=>{navigate('../forgotpass')}}>
           Forgot Password?
         </div>
         {button}

@@ -7,7 +7,7 @@ function App() {
 
     <div className='App'>
       <Routes>
-          <Route path='/*' element={ <AuthLayout/> } />
+          <Route path='reactauth/*' element={ <AuthLayout/> } />
       </Routes>
     </div>
   );

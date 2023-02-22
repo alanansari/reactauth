@@ -25,7 +25,7 @@ export default function AuthLayout(props){
             
             <div className={styles.form_box}>
                 <Routes>
-                    <Route exact path="/" element={<Navigate replace to="/login" />}></Route>
+                    <Route exact path="/" element={<Navigate replace to="./login" />}></Route>
                     <Route exact path='/login' element={ <Login/> } />
                     <Route exact path='/signup' element={ <Signup /> } />
                     <Route exact path='/otp' element={ <OtpPage /> } />
