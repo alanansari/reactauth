@@ -43,12 +43,14 @@ const OtpPage = () => {
 
   const navigate = useNavigate();
 
-  function goToPage(link,token=null){
-      navigate(link,{state:{token}});
+  function goToPage(link,token=null,uriend){
+      navigate(link,{state:{token,uriend}});
   }
 
-  function handleClick(){
-    axios.post('http://localhost:5000/email',{
+  const uriend = (location.state.from==='forgotpwd') ? 'forgotpwd' : 'email';
+
+  function handleClick(uriend){
+    axios.post('http://localhost:5000/' + uriend,{
       email:location.state.email
     }).then(res=>{
       toast.success(`${res.data.msg}`, {
@@ -80,15 +82,15 @@ const OtpPage = () => {
     
   }
 
-  function handleSubmit(){
+  function handleSubmit(uriend){
       setLoading(true);
-      axios.post('http://localhost:5000/email/verify',{
+      axios.post('http://localhost:5000/' + uriend + '/verify',{
       email:location.state.email,
       otp:otp
     }).then(res=>{
       setLoading(false);
       console.log(res);
-      goToPage('../setpassword',res.data.token);
+      goToPage('../setpassword',res.data.token,uriend);
     }).catch(err => {
       setLoading(false);
       console.log(err);
@@ -113,7 +115,7 @@ const OtpPage = () => {
       className="common_btn"
       text='Continue'
       margin='2vh 0 6vh 0'
-      handleClick={handleSubmit}
+      handleClick={()=>handleSubmit(uriend)}
     />;
 
   return (
@@ -128,7 +130,7 @@ const OtpPage = () => {
         </div>
         <Otp otp={otp} handleChange={handleChange} margin='1vh 0 3vh 0' />
         <CommonButton
-          handleClick={handleClick}
+          handleClick={()=>handleClick(uriend)}
           disabled={resendDisabled}
           variant='outlined'
           className="common_btn"

@@ -1,14 +1,14 @@
-import {React,useEffect,useState} from 'react'
-import axios from 'axios';
-import styles from './SignUp.module.css'
-import Email from '../../../components/input/ValidatedEmail'
+import React,{useEffect,useState} from 'react'
+import axios from 'axios'
+import styles from './Fpassword.module.css'
+import Email from '../../../components/input/Email'
 import CommonButton from '../../../components/buttons/commonButton';
 import LoadingBtn from '../../../components/buttons/loading';
+import Toast from '../../../components/Toast'
 import { useNavigate } from 'react-router-dom'
-import Toast from '../../../components/Toast';
 import { toast } from 'react-toastify';
 
-const Signup = () => {
+const Fpassword = () => {
 
   const [emailVal,setEmailVal] = useState('');
   const [isValid,setValid] = useState(true);
@@ -27,12 +27,12 @@ const Signup = () => {
 
   function handleClick(){
       setLoading(true);
-      axios.post('http://localhost:5000/email',{
+      axios.post('http://localhost:5000/forgotpwd',{
       email:emailVal
     }).then(res=>{
       setLoading(false);
       console.log(res);
-      navigate('/otp',{state:{email:emailVal,from:'signup'}});
+      navigate('../otp',{state:{email:emailVal,from:'forgotpwd'}});
     }).catch(err => {
       setLoading(false);
       console.log(err);
@@ -52,7 +52,7 @@ const Signup = () => {
   const button = (loading) ?
     <LoadingBtn margin='5vh 0 2vh 0'>Submit</LoadingBtn> 
   : <CommonButton
-    handleClick={()=>{handleClick('/otp')}}
+    handleClick={()=>{handleClick('./otp')}}
     disabled={disability} 
     variant='contained' 
     className="common_btn" 
@@ -64,9 +64,10 @@ const Signup = () => {
     <div className={styles.container}>
       <Toast/> 
       <div className={styles.title_box}>
-        <div className={styles.heading}>Sign Up</div>
+        <div className={styles.heading}>Forgot Password?</div>
       </div>
       <div className={styles.form_fields}>
+      <div className={styles.text}>Enter your accounts email id to send OTP:</div>
         <Email
           id='email'
           val={emailVal}
@@ -77,10 +78,10 @@ const Signup = () => {
         {button}
       </div>
       <div className={styles.options}>
-        <div>Already a user? &nbsp;
-          <span className={styles.login} 
-                onClick={()=>{navigate('/login')}}
-                >Login
+        <div>Don't have an account? &nbsp;
+          <span className={styles.signup} 
+                onClick={()=>{navigate('/signup')}}
+                >Signup
           </span>
         </div>
       </div>
@@ -88,4 +89,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Fpassword

@@ -5,6 +5,7 @@ import OtpPage from "./Otp/Otp";
 import Welcome from "../welcome";
 import { Route,Routes,Navigate } from 'react-router-dom';
 import SetPassword from "./Password/Setpassword";
+import Fpassword from "./Forgotpassword/Fpassword";
 
 const rootdiv = document.getElementById('root');
 
@@ -24,12 +25,13 @@ export default function AuthLayout(props){
             
             <div className={styles.form_box}>
                 <Routes>
-                    <Route path="/" element={<Navigate replace to="/login" />}></Route>
-                    <Route path='/login' element={ <Login/> } />
-                    <Route path='/signup' element={ <Signup /> } />
-                    <Route path='/signup/otp' element={ <OtpPage /> } />
-                    <Route path='/setpassword' element={ <SetPassword /> } />
-                    <Route path='/welcome' element={ <Welcome /> } />
+                    <Route exact path="/" element={<Navigate replace to="/login" />}></Route>
+                    <Route exact path='/login' element={ <Login/> } />
+                    <Route exact path='/signup' element={ <Signup /> } />
+                    <Route exact path='/otp' element={ <OtpPage /> } />
+                    <Route exact path='/setpassword' element={ <SetPassword /> } />
+                    <Route exact path='/welcome' element={ <Welcome /> } />
+                    <Route exact path='/forgotpass' element={<Fpassword/>}/>
                     <Route path='/*' element={<Navigate replace to='../' />} />
                 </Routes>
             </div>

@@ -34,11 +34,13 @@ const SetPassword = () => {
             
     },[passValue,conpassValue]);
 
+    const uriend = (location.state.uriend==='forgotpwd') ? 'resetpass' : 'signup';
+
     const navigate = useNavigate();
 
-    function handleSubmit(){
+    function handleSubmit(uriend){
         setLoading(true);
-        axios.post('http://localhost:5000/signup',
+        axios.post('http://localhost:5000/' + uriend,
             {password:passValue},{
             headers:{
                 'authorization':location.state.token
@@ -46,17 +48,7 @@ const SetPassword = () => {
         ).then(res=>{
             setLoading(false);
             console.log(res);
-            toast.success(`${res.data.msg}`, {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
-            navigate('../welcome');
+            navigate('../login');
         }).catch(err => {
             setLoading(false);
             console.log(err);
@@ -77,7 +69,7 @@ const SetPassword = () => {
     <LoadingBtn margin='3vh 0'>
     </LoadingBtn> 
     : <CommonButton
-        handleClick={handleSubmit}
+        handleClick={()=>handleSubmit(uriend)}
         disabled={disability}
         variant='contained' 
         className="common_btn" 

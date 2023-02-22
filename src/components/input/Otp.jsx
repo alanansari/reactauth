@@ -5,7 +5,7 @@ const Otp = (props) => {
 
   return (
     <div style={{margin:props.margin}}>
-    <MuiOtpInput length={6} value={props.otp} onChange={props.handleChange} />
+      <MuiOtpInput length={6} value={props.otp} onChange={props.handleChange} />
     </div>
   )
 }
