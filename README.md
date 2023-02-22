@@ -1,3 +1,3 @@
-## See hosted site : [here](https://alanansari.github.io/ractauth/)
+## See hosted site : [here](https://alanansari.github.io/reactauth/)
 
 ### backend not hosted currently.
