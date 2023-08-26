@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/reactauth/static/css/main.693be4c8.css",
-    "main.js": "/reactauth/static/js/main.6f233c3c.js",
+    "main.css": "/reactauth/static/css/main.d0fa876e.css",
+    "main.js": "/reactauth/static/js/main.85225df8.js",
     "static/js/787.f0d5ecd7.chunk.js": "/reactauth/static/js/787.f0d5ecd7.chunk.js",
     "index.html": "/reactauth/index.html",
-    "main.693be4c8.css.map": "/reactauth/static/css/main.693be4c8.css.map",
-    "main.6f233c3c.js.map": "/reactauth/static/js/main.6f233c3c.js.map",
+    "main.d0fa876e.css.map": "/reactauth/static/css/main.d0fa876e.css.map",
+    "main.85225df8.js.map": "/reactauth/static/js/main.85225df8.js.map",
     "787.f0d5ecd7.chunk.js.map": "/reactauth/static/js/787.f0d5ecd7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.693be4c8.css",
-    "static/js/main.6f233c3c.js"
+    "static/css/main.d0fa876e.css",
+    "static/js/main.85225df8.js"
   ]
 }
